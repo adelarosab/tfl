@@ -3,7 +3,10 @@ define ["collections/stops"], (StopsCollection) ->
     url: "http://countdown.tfl.gov.uk/markers/swLat/:swlat/swLng/:swlng/neLat/:nelat/neLng/:nelng/"
 
     initialize: (options) ->
-      param = ///:\w+///g
+      param = ///:(\w+)///g
 
-      @url = @url.replace param, (match) ->
-        return options?[match]
+      @url = @url.replace param, (match, key) ->
+        return options?[key]
+
+    parse: (data) ->
+      return data?.markers
