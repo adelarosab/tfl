@@ -1,6 +1,6 @@
 .idea/
 bower_components/
-js/**/*.js
-js/**/*.js.map
+src/js/**/*.js
+src/js/**/*.js.map
 node_modules/
 spec/**/*.js
