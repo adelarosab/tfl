@@ -1,0 +1,20 @@
+{
+  "name": "tfl",
+  "version": "0.0.1",
+  "authors": [
+    "Adrián de la Rosa <adrian@delarosab.me>"
+  ],
+  "description": "TFL API test",
+  "main": "index.html",
+  "keywords": [
+    "tfl",
+    "api"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "requirejs": "~2.1.16",
+    "marionette": "~2.4.1",
+    "handlebars": "~3.0.0"
+  }
+}
