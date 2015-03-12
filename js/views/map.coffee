@@ -23,13 +23,14 @@ define [
 
       delegateMapEvents: (map) ->
         google.maps.event.addListenerOnce map, "idle", =>
-          console.log "load"
           @trigger "load"
 
         refresh = => @trigger "refresh"
         google.maps.event.addListener map, "bounds_changed", refresh
         google.maps.event.addListener map, "resize", refresh
         google.maps.event.addListener map, "zoom_changed", refresh
+        google.maps.event.addListener map, "click", =>
+          @trigger "resetIcons"
 
       getMap: ->
         map = new google.maps.Map @el, @mapOptions()
