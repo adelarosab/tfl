@@ -12,3 +12,4 @@ require.config
     jquery: "../bower_components/jquery/dist/jquery"
 #    moment: "../bower_components/moment/moment"
     underscore: "../bower_components/underscore/underscore"
+    hbs: "../bower_components/require-handlebars-plugin/hbs"

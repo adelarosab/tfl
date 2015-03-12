@@ -1,7 +1,47 @@
-define ["backbone.marionette", "collections/stops", "models/map"],
-  (Marionette, StopsCollection, MapModel) ->
+define [
+    "backbone.marionette",
+    "providers/stops",
+    "models/map",
+    "views/marker",
+    "hbs!views/templates/empty"
+  ],
+  (Marionette, StopsProvider, MapModel, MarkerView, template) ->
     class extends Marionette.CompositeView
-      collection: StopsCollection
+      collection: StopsProvider
       model: MapModel
 
-      tagName: "figure",
+      childView: MarkerView
+      tagName: "figure"
+      template: template
+
+      childViewOptions: ->
+        map: @options.map
+
+      onRender: ->
+        window.map = @options.map = @getMap()
+
+
+      delegateMapEvents: (map) ->
+        google.maps.event.addListenerOnce map, "idle", =>
+          console.log "load"
+          @trigger "load"
+
+        refresh = => @trigger "refresh"
+        google.maps.event.addListener map, "bounds_changed", refresh
+        google.maps.event.addListener map, "resize", refresh
+        google.maps.event.addListener map, "zoom_changed", refresh
+
+      getMap: ->
+        map = new google.maps.Map @el, @mapOptions()
+        @delegateMapEvents map
+        map
+
+      mapOptions: ->
+        center:
+          lat: @model.get "lat"
+          lng: @model.get "lng"
+        keyboardShortcuts: false
+        mapTypeControl: false
+        minZoom: 11
+        streetViewControl: false
+        zoom: 15

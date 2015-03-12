@@ -1,12 +1,11 @@
 define ["collections/stops"], (StopsCollection) ->
   class extends StopsCollection
-    url: "http://countdown.tfl.gov.uk/markers/swLat/:swlat/swLng/:swlng/neLat/:nelat/neLng/:nelng/"
-
-    initialize: (options) ->
-      param = ///:(\w+)///g
-
-      @url = @url.replace param, (match, key) ->
-        return options?[key]
+    urlRegexp: "http://countdown.tfl.gov.uk/markers/swLat/:swlat/swLng/:swlng/neLat/:nelat/neLng/:nelng/"
 
     parse: (data) ->
       return data?.markers
+
+    resolveUrl: (options) ->
+      param = ///:(\w+)///g
+      @url = @urlRegexp.replace param, (match, key) =>
+        options?[key]
