@@ -1,12 +1,14 @@
 define ["collections/arrivals"], (ArrivalsCollection) ->
-  class extends StopsCollection
-    url: "http://countdown.tfl.gov.uk/stopBoard/:id"
-
-    initialize: (options) ->
-      param = ///:(\w+)///g
-
-      @url = @url.replace param, (match, key) ->
-        return options?[key]
+  class extends ArrivalsCollection
+#    urlRegexp: "http://countdown.tfl.gov.uk/stopBoard/:id"
+    urlRegexp: "http://digitaslbi-id-test.herokuapp.com/bus-stops/:id"
 
     parse: (data) ->
       return data?.arrivals
+
+    resolveUrl: (options) ->
+      console.log options
+      param = ///:(\w+)///g
+
+      @url = @urlRegexp.replace param, (match, key) =>
+        options?[key]

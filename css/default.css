@@ -9,3 +9,25 @@ main {
   width: 100%;
   height: 100%;
 }
+aside {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  background: #FFFFFF;
+  overflow: auto;
+  transition: margin-bottom 1.25s ease-out;
+}
+aside table {
+  width: 100%;
+}
+aside table thead {
+  background: #455A64;
+  color: #FFFFFF;
+}
+aside table td {
+  padding: 5px 10px;
+}
+aside:empty {
+  margin-bottom: -200px;
+}

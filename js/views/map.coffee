@@ -30,7 +30,7 @@ define [
         google.maps.event.addListener map, "resize", refresh
         google.maps.event.addListener map, "zoom_changed", refresh
         google.maps.event.addListener map, "click", =>
-          @trigger "resetIcons"
+          @trigger "reset"
 
       getMap: ->
         map = new google.maps.Map @el, @mapOptions()

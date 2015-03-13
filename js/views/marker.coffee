@@ -23,9 +23,9 @@ define ["backbone.marionette", "models/stop", "hbs!views/templates/empty"], (Mar
 
     delegateMarkerEvents: (marker) ->
       google.maps.event.addListener marker, "click", =>
-        @trigger "resetIcons"
+        @trigger "reset"
         @trigger "line", @model.get "routes"
-        @model.set "status", STATUS.selected
+        @trigger "select"
 
     getMarker: ->
       marker = new google.maps.Marker @markerOptions()
