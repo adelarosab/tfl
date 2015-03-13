@@ -15,6 +15,7 @@
   "dependencies": {
     "requirejs": "~2.1.16",
     "marionette": "~2.4.1",
-    "handlebars": "~3.0.0"
+    "handlebars": "~3.0.0",
+    "require-handlebars-plugin": "~0.11.2"
   }
 }

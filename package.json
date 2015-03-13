@@ -4,7 +4,7 @@
   "description": "TFL API test",
   "main": "index.html",
   "scripts": {
-    "start": "npm install && bower install && node server.js",
+    "start": "npm install && bower install && node server.js && echo 'Open a browser localhost:3000'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
